@@ -1,1 +1,33 @@
+DROP TABLE if exists 수강;
+DROP TABLE if exists 과목;
+DROP TABLE if exists 학생;
 
+CREATE TABLE 과목 (
+	  과목번호 char(4)            NOT NULL     PRIMARY KEY , 
+	  이름       VARCHAR(20)   NOT NULL , 
+	  강의실    CHAR(3)          NOT NULL ,
+	  개설학과 VARCHAR(20)   NOT NULL ,
+	  시수       INT                 NOT NULL 
+) ; 
+
+CREATE TABLE 학생 (
+	  학번       CHAR(4)           NOT NULL ,
+	  이름       VARCHAR(20)    NOT NULL ,
+	  주소       VARCHAR(50)     DEFAULT '미정' , 
+	  학년       INT                  NOT NULL ,
+	  나이       INT  ,
+	  성별       CHAR(1)           NOT NULL ,
+	  휴대폰번호  CHAR(14) , 
+                소속학과    VARCHAR(20) ,
+	  PRIMARY KEY (학번) 
+) ; 
+
+CREATE TABLE 수강 (
+	  학번        char(6)            NOT NULL ,
+	  과목번호  CHAR(4)          NOT NULL ,
+	  신청날짜   DATE             NOT NULL ,
+	  중간성적   INT                  DEFAULT 0 ,
+	  기말성적   INT                  DEFAULT 0 , 
+	  평가학점   CHAR(1) ,        
+	  PRIMARY KEY(학번, 과목번호) 
+) ; 
