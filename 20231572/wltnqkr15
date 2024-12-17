@@ -1,0 +1,37 @@
+1-1) 테이블 생성 문법을 작성하시오(의사, 환자)  (단, 기본키, 외래키 설정하여 작성)
+
+create table 의사(
+	의사번호 char(4) not null,
+    의사이름 char(20),
+	소속 char(10),
+    근무연수 int,
+    
+    primary key(의사번호)
+);
+create table 환자(
+    환자번호 char(4) not null,
+    환자이름 char(20),
+	나이 int,
+    담당의사 char(4) not null,
+    
+    primary key(환자번호),
+    foreign key(담당의사)
+		references 의사(의사번호)
+);
+
+1-2) 데이터 입력 문법을 작성하시오
+
+insert into 의사 values ('D001', '정지영', '내과', '5');
+insert into 의사 values ('D002', '김선주', '피부과', '10');
+insert into 의사 values ('D003', '정성호', '정형외과', '15');
+
+
+insert into 환자 values ('P001', '오우진', '31', 'D002');
+insert into 환자 values ('P002', '채광주', '50', 'D001');
+insert into 환자 values ('P003', '김용욱', '43', 'D003');
+
+1-3) 데이터 입력 → 위에 입력한 것에 추가로 레코드 2개 입력하시오(내용은 자유, 단, 의미 있는 데이터 입력)
+insert into 의사 values ('D999', '박지수', '진단과', '765');
+insert into 환자 values ('P999', '박지수', '21', 'D959');
+
+
